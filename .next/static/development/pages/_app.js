@@ -63832,13 +63832,13 @@ __webpack_require__.r(__webpack_exports__);
  // Firebaseの初期化
 
 var config = {
-  apiKey: "AIzaSyC-5QuzovDqD6iS8-Yqyl3bu2gShVzy0cg",
-  authDomain: "boobypenguin-angular-app.firebaseapp.com",
-  databaseURL: "https://boobypenguin-angular-app.firebaseio.com",
-  projectId: "boobypenguin-angular-app",
-  storageBucket: "boobypenguin-angular-app.appspot.com",
-  messagingSenderId: "175259266858",
-  appId: "1:175259266858:web:853814482f10f1d1"
+  apiKey: "AIzaSyDTXN1I5-dm6H8DZccprhDLGxZRnQWQi8M",
+  authDomain: "boobypenguin-reactjs-app.firebaseapp.com",
+  databaseURL: "https://boobypenguin-reactjs-app.firebaseio.com",
+  projectId: "boobypenguin-reactjs-app",
+  storageBucket: "",
+  messagingSenderId: "169011112556",
+  appId: "1:169011112556:web:36856648aec5b6a4"
 };
 var fireapp;
 

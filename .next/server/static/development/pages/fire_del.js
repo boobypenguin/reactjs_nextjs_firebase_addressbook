@@ -88,15 +88,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/Firefind.js":
-/*!********************************!*\
-  !*** ./components/Firefind.js ***!
-  \********************************/
+/***/ "./components/Firedelete.js":
+/*!**********************************!*\
+  !*** ./components/Firedelete.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -113,8 +113,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase */ "firebase");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! firebase/storage */ "firebase/storage");
-/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(firebase_storage__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! firebase/storage */ "firebase/storage");
+/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(firebase_storage__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -122,117 +124,59 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\components\\Firefind.js";
+var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\components\\Firedelete.js";
 
 
 
 
-var Firefind =
+
+var Firedelete =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Firefind, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Firedelete, _Component);
 
-  function Firefind(props) {
+  function Firedelete(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Firefind);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Firedelete);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Firefind).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Firedelete).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "style", {
-      borderBottom: "1px solid gray" // 初期化。ステートとイベント用メソッドの設定
+      fontSize: "12pt",
+      padding: "5px 10px" // 初期化処理
 
     });
 
     _this.state = {
-      input: '',
-      data: []
+      id_str: ''
     };
     _this.doChange = _this.doChange.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.doAction = _this.doAction.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     return _this;
-  } // 入力フィールドに入力時の処理
+  }
 
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Firefind, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Firedelete, [{
     key: "doChange",
     value: function doChange(e) {
       this.setState({
-        input: e.target.value
+        id_str: e.target.value
       });
-    } // ボタンクリック時の処理
-
+    }
   }, {
     key: "doAction",
     value: function doAction(e) {
-      this.findFireData(this.state.input);
-    } // 検索の実行
+      this.deleteFireData();
+      next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push('/fire');
+    } // 項目の削除
 
   }, {
-    key: "findFireData",
-    value: function findFireData(s) {
+    key: "deleteFireData",
+    value: function deleteFireData() {
+      var id = this.state.id_str;
       var db = firebase__WEBPACK_IMPORTED_MODULE_8___default.a.database();
-      var ref = db.ref('sample/');
-      var self = this;
-      ref.orderByKey().equalTo(s).on('value', function (snapshot) {
-        self.setState({
-          data: snapshot.val()
-        });
-      });
-    } // テーブルの内容の作成
-
-  }, {
-    key: "getTableData",
-    value: function getTableData() {
-      var result = [];
-
-      if (this.state.data == null || this.state.data.length == 0) {
-        return [react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
-          key: "0",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 57
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 57
-          },
-          __self: this
-        }, "NO DATA."))];
-      }
-
-      for (var i in this.state.data) {
-        result.push(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
-          key: i,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 60
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 61
-          },
-          __self: this
-        }, this.state.data[i].ID), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 62
-          },
-          __self: this
-        }, this.state.data[i].name), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 63
-          },
-          __self: this
-        }, this.state.data[i].message)));
-      }
-
-      return result;
+      var ref = db.ref('sample/' + id);
+      ref.remove();
     } // レンダリング
 
   }, {
@@ -241,52 +185,83 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 49
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        type: "text",
-        onChange: this.doChange,
-        style: this.style,
-        value: this.state.input,
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("table", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
-        onClick: this.doAction,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 75
-        },
-        __self: this
-      }, "Find"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 76
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("table", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 50
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tbody", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 51
         },
         __self: this
-      }, this.getTableData())));
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
+        className: "label",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        },
+        __self: this
+      }, "ID:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        type: "text",
+        placeholder: "delete ID:",
+        onChange: this.doChange,
+        value: this.state.id_str,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        },
+        __self: this
+      }))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+        onClick: this.doAction,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59
+        },
+        __self: this
+      }, "Delete"))))));
     }
   }]);
 
-  return Firefind;
+  return Firedelete;
 }(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Firefind);
+/* harmony default export */ __webpack_exports__["default"] = (Firedelete);
 
 /***/ }),
 
@@ -831,10 +806,10 @@ function _typeof(obj) {
 
 /***/ }),
 
-/***/ "./pages/fire_find.js":
-/*!****************************!*\
-  !*** ./pages/fire_find.js ***!
-  \****************************/
+/***/ "./pages/fire_del.js":
+/*!***************************!*\
+  !*** ./pages/fire_del.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -843,21 +818,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_Firefind__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Firefind */ "./components/Firefind.js");
-var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\fire_find.js";
+/* harmony import */ var _components_Firedelete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Firedelete */ "./components/Firedelete.js");
+var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\fire_del.js";
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
     header: "Fire",
-    title: "Sample data.",
+    title: "delete data.",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Firefind__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Firedelete__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -891,14 +866,14 @@ var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_fireb
 
 /***/ }),
 
-/***/ 5:
-/*!**********************************!*\
-  !*** multi ./pages/fire_find.js ***!
-  \**********************************/
+/***/ 3:
+/*!*********************************!*\
+  !*** multi ./pages/fire_del.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\fire_find.js */"./pages/fire_find.js");
+module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\fire_del.js */"./pages/fire_del.js");
 
 
 /***/ }),
@@ -1002,6 +977,17 @@ module.exports = require("next/head");
 
 /***/ }),
 
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -1014,4 +1000,4 @@ module.exports = require("react");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=fire_find.js.map
+//# sourceMappingURL=fire_del.js.map
