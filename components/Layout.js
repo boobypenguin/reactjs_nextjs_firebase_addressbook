@@ -19,7 +19,7 @@ class Layout extends Component {
             <Header header={this.props.header}
                 title={this.props.title} />
             {this.props.children}
-            <Footer footer="copyright SYODA-Tuyano." />
+            <Footer footer="copyright boobypenguin." />
         </div>);
     }
 
