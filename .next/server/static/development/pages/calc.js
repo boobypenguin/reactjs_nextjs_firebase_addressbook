@@ -88,15 +88,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/Counter.js":
-/*!*******************************!*\
-  !*** ./components/Counter.js ***!
-  \*******************************/
+/***/ "./components/Calc.js":
+/*!****************************!*\
+  !*** ./components/Calc.js ***!
+  \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -120,48 +120,68 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\components\\Counter.js";
+var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\components\\Calc.js";
 
 
 
-var Counter =
+var Calc =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Counter, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Calc, _Component);
 
-  function Counter(props) {
+  function Calc(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Counter);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Calc);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Counter).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Calc).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "style", {
       fontSize: "12pt",
-      padding: "5px 15px"
+      padding: "5px 10px"
     });
 
+    _this.state = {
+      input: ''
+    };
+    _this.onChange = _this.onChange.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    _this.onKeyPress = _this.onKeyPress.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.doAction = _this.doAction.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     _this.reset = _this.reset.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Counter, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Calc, [{
+    key: "onChange",
+    value: function onChange(e) {
+      this.setState({
+        input: e.target.value
+      });
+    }
+  }, {
+    key: "onKeyPress",
+    value: function onKeyPress(e) {
+      if (event.keyCode == 13) {
+        this.doAction(e);
+      }
+    }
+  }, {
     key: "doAction",
     value: function doAction(e) {
-      if (e.shiftKey) {
-        return this.props.dispatch({
-          type: 'DECREMENT'
-        });
-      } else {
-        return this.props.dispatch({
-          type: 'INCREMENT'
-        });
-      }
+      this.setState({
+        input: ''
+      });
+      return this.props.dispatch({
+        type: 'ENTER',
+        value: this.state.input
+      });
     }
   }, {
     key: "reset",
     value: function reset() {
+      this.setState({
+        input: ''
+      });
       return this.props.dispatch({
         type: 'RESET'
       });
@@ -169,45 +189,107 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var result = [];
+      var n = this.props.data.length;
+
+      for (var i = 0; i < n; i++) {
+        result.push(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
+          key: i,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          },
+          __self: this
+        }, this.props.data[i]), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          },
+          __self: this
+        }, this.props.number[i])));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 67
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 68
         },
         __self: this
-      }, this.props.message, ": ", this.props.count), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }, "TOTAL: ", this.props.result), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        type: "text",
+        style: this.style,
+        size: "40",
+        value: this.state.input,
+        onChange: this.onChange,
+        onKeyPress: this.onKeyPress,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         style: this.style,
         onClick: this.doAction,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 72
         },
         __self: this
-      }, "Count"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }, "Enter"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         style: this.style,
         onClick: this.reset,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 74
         },
         __self: this
-      }, "Reset"));
+      }, "Reset"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("table", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tbody", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }, result)), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80
+        },
+        __self: this
+      }, this.props.message));
     }
   }]);
 
-  return Counter;
+  return Calc;
 }(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-Counter = Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(function (state) {
+Calc = Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(function (state) {
   return state;
-})(Counter);
-/* harmony default export */ __webpack_exports__["default"] = (Counter);
+})(Calc);
+/* harmony default export */ __webpack_exports__["default"] = (Calc);
 
 /***/ }),
 
@@ -1528,10 +1610,10 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/calc.js":
+/*!***********************!*\
+  !*** ./pages/calc.js ***!
+  \***********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1542,8 +1624,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_Counter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Counter */ "./components/Counter.js");
-var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\index.js";
+/* harmony import */ var _components_Calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Calc */ "./components/Calc.js");
+var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\calc.js";
 
 
 
@@ -1563,14 +1645,14 @@ var p = {
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    header: "Next",
-    title: "Top page.",
+    header: "Calc",
+    title: "calculator",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Counter__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Calc__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 25
@@ -1582,20 +1664,26 @@ var p = {
       lineNumber: 26
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "./other",
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 27
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 29
     },
     __self: this
-  }, "go to Other >>")));
+  }, "<< Back to Top"))));
 });
 
 /***/ }),
@@ -1623,14 +1711,14 @@ var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_fireb
 
 /***/ }),
 
-/***/ 3:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
+/***/ 4:
+/*!*****************************!*\
+  !*** multi ./pages/calc.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\calc.js */"./pages/calc.js");
 
 
 /***/ }),
@@ -1867,4 +1955,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=calc.js.map

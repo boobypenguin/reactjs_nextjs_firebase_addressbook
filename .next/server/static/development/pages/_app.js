@@ -1495,42 +1495,52 @@ __webpack_require__.r(__webpack_exports__);
 
 var initial = {
   message: 'START',
-  count: 0 // レデューサー
+  data: [],
+  number: [],
+  result: 0 // レデューサー
 
 };
 
-function counterReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initial;
+function calcReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intitial;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case 'INCREMENT':
+    // 計算実行
+    case 'ENTER':
+      var data2 = state.data.slice();
+      var s = action.value;
+      data2.unshift(s);
+      var num = s.replace(/[^0-9]/g, "");
+      var number2 = state.number.slice();
+      number2.unshift(num);
+      var result = state.result * 1 + num * 1;
       return {
-        message: 'INCREMENT',
-        count: state.count + 1
+        message: 'ENTER',
+        data: data2,
+        number: number2,
+        result: result
       };
-
-    case 'DECREMENT':
-      return {
-        message: 'DECREMENT',
-        count: state.count - 1
-      };
+    // リセット
 
     case 'RESET':
       return {
         message: 'RESET',
-        count: initial.count
+        data: [],
+        number: [],
+        result: 0
       };
+    // デフォルト
 
     default:
       return state;
   }
-} // initStore関数（redux-store.jsで必要）
+} // initStore関数
 
 
 function initStore() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initial;
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(counterReducer, state, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(calcReducer, state, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1___default.a));
 }
 
 /***/ }),
