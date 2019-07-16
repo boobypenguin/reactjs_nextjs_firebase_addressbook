@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1380,9 +1380,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/other.js":
 /*!************************!*\
-  !*** ./pages/index.js ***!
+  !*** ./pages/other.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1394,7 +1394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\index.js";
+var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_firebase_addressbook\\pages\\other.js";
 
 
 
@@ -1413,8 +1413,8 @@ var p = {
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    header: "Next",
-    title: "Top page.",
+    header: "Other",
+    title: "Other page.",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
@@ -1426,26 +1426,32 @@ var p = {
       lineNumber: 24
     },
     __self: this
-  }, "Welcome to next.js!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }, "This is Other page."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 25
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "./other",
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 28
     },
     __self: this
-  }, "go to Other >>")));
+  }, "<< Back to Top"))));
 });
 
 /***/ }),
@@ -1473,14 +1479,14 @@ var _jsxFileName = "D:\\programming\\Reactjs_Nextjs_sample\\reactjs_nextjs_fireb
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
-  !*** multi ./pages/index.js ***!
+  !*** multi ./pages/other.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! D:\programming\Reactjs_Nextjs_sample\reactjs_nextjs_firebase_addressbook\pages\other.js */"./pages/other.js");
 
 
 /***/ }),
@@ -1706,4 +1712,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=other.js.map
