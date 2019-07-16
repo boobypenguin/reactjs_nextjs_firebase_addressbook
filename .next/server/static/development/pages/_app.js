@@ -1494,28 +1494,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
 
 
- // Firebaseの初期化
+ // Firebase設定
 
 var config = {
-  apiKey: "AIzaSyDTXN1I5-dm6H8DZccprhDLGxZRnQWQi8M",
-  authDomain: "boobypenguin-reactjs-app.firebaseapp.com",
-  databaseURL: "https://boobypenguin-reactjs-app.firebaseio.com",
-  projectId: "boobypenguin-reactjs-app",
-  storageBucket: "",
-  messagingSenderId: "169011112556",
-  appId: "1:169011112556:web:36856648aec5b6a4"
-};
+  apiKey: "AIzaSyC-5QuzovDqD6iS8-Yqyl3bu2gShVzy0cg",
+  authDomain: "boobypenguin-angular-app.firebaseapp.com",
+  databaseURL: "https://boobypenguin-angular-app.firebaseio.com",
+  projectId: "boobypenguin-angular-app",
+  storageBucket: "boobypenguin-angular-app.appspot.com",
+  messagingSenderId: "175259266858",
+  appId: "1:175259266858:web:853814482f10f1d1"
+}; // Firebase初期化
+
 var fireapp;
 
 try {
-  firebase__WEBPACK_IMPORTED_MODULE_2___default.a.initializeApp(config);
+  fireapp = firebase__WEBPACK_IMPORTED_MODULE_2___default.a.initializeApp(config);
 } catch (error) {
   console.log(error.message);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (fireapp); // ステート初期値
 
-var initial = {}; // レデューサー（ダミー）
+var initial = {
+  login: false,
+  username: '(click here!)',
+  email: '',
+  data: [],
+  items: [] // レデューサー
+
+};
 
 function fireReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intitial;
@@ -1523,8 +1531,8 @@ function fireReducer() {
 
   switch (action.type) {
     // ダミー
-    case 'TESTACTION':
-      return state;
+    case 'UPDATE_USER':
+      return action.value;
     // デフォルト
 
     default:

@@ -2,40 +2,51 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import firebase from "firebase";
 
-// Firebaseの初期化
+
+// Firebase設定
 var config = {
-    apiKey: "AIzaSyDTXN1I5-dm6H8DZccprhDLGxZRnQWQi8M",
-    authDomain: "boobypenguin-reactjs-app.firebaseapp.com",
-    databaseURL: "https://boobypenguin-reactjs-app.firebaseio.com",
-    projectId: "boobypenguin-reactjs-app",
-    storageBucket: "",
-    messagingSenderId: "169011112556",
-    appId: "1:169011112556:web:36856648aec5b6a4"
+    apiKey: "AIzaSyC-5QuzovDqD6iS8-Yqyl3bu2gShVzy0cg",
+    authDomain: "boobypenguin-angular-app.firebaseapp.com",
+    databaseURL: "https://boobypenguin-angular-app.firebaseio.com",
+    projectId: "boobypenguin-angular-app",
+    storageBucket: "boobypenguin-angular-app.appspot.com",
+    messagingSenderId: "175259266858",
+    appId: "1:175259266858:web:853814482f10f1d1"
 };
 
+
+// Firebase初期化
 var fireapp;
 try {
-    firebase.initializeApp(config);
+    fireapp = firebase.initializeApp(config);
 } catch (error) {
     console.log(error.message);
 }
 export default fireapp;
 
+
 // ステート初期値
 const initial = {
+    login: false,
+    username: '(click here!)',
+    email: '',
+    data: [],
+    items: []
 }
 
-// レデューサー（ダミー）
+
+// レデューサー
 function fireReducer(state = intitial, action) {
     switch (action.type) {
         // ダミー
-        case 'TESTACTION':
-            return state;
+        case 'UPDATE_USER':
+            return action.value;
         // デフォルト
         default:
             return state;
     }
 }
+
 
 // initStore関数
 export function initStore(state = initial) {

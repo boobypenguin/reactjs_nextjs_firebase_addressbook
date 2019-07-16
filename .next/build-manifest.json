@@ -12,15 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/fire": [
+    "/address": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/fire_add": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/fire_del": [
+    "/address_show": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
