@@ -1480,7 +1480,7 @@ function (_App2) {
 /*!******************!*\
   !*** ./store.js ***!
   \******************/
-/*! exports provided: initStore */
+/*! exports provided: default, initStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1490,46 +1490,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase */ "firebase");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
 
- // ステート初期値
 
-var initial = {
-  message: 'START',
-  data: [],
-  number: [],
-  result: 0 // レデューサー
+ // Firebaseの初期化
 
+var config = {
+  apiKey: "AIzaSyC-5QuzovDqD6iS8-Yqyl3bu2gShVzy0cg",
+  authDomain: "boobypenguin-angular-app.firebaseapp.com",
+  databaseURL: "https://boobypenguin-angular-app.firebaseio.com",
+  projectId: "boobypenguin-angular-app",
+  storageBucket: "boobypenguin-angular-app.appspot.com",
+  messagingSenderId: "175259266858",
+  appId: "1:175259266858:web:0207ac956c619d95"
 };
+var fireapp;
 
-function calcReducer() {
+try {
+  firebase__WEBPACK_IMPORTED_MODULE_2___default.a.initializeApp(config);
+} catch (error) {
+  console.log(error.message);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (fireapp); // ステート初期値
+
+var initial = {}; // レデューサー（ダミー）
+
+function fireReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intitial;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    // 計算実行
-    case 'ENTER':
-      var data2 = state.data.slice();
-      var s = action.value;
-      data2.unshift(s);
-      var num = s.replace(/[^0-9]/g, "");
-      var number2 = state.number.slice();
-      number2.unshift(num);
-      var result = state.result * 1 + num * 1;
-      return {
-        message: 'ENTER',
-        data: data2,
-        number: number2,
-        result: result
-      };
-    // リセット
-
-    case 'RESET':
-      return {
-        message: 'RESET',
-        data: [],
-        number: [],
-        result: 0
-      };
+    // ダミー
+    case 'TESTACTION':
+      return state;
     // デフォルト
 
     default:
@@ -1540,7 +1535,7 @@ function calcReducer() {
 
 function initStore() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initial;
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(calcReducer, state, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(fireReducer, state, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1___default.a));
 }
 
 /***/ }),
@@ -1686,6 +1681,17 @@ module.exports = require("core-js/library/fn/symbol");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/symbol/iterator");
+
+/***/ }),
+
+/***/ "firebase":
+/*!***************************!*\
+  !*** external "firebase" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase");
 
 /***/ }),
 
